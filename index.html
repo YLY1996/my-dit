@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态logo</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        .logo {
+            width: 400px;
+            height: 400px;
+            margin: 200px auto;
+            border: 1px solid red;
+            position: relative;
+
+        }
+
+        span {
+            width: 400px;
+            height: 400px;
+            font-size: 30px;
+            color: red;
+            display: block;
+            line-height: 400px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -200px 0 0 -200px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            // var canvas = document.getElementsByTagName('canvas')[0];   //获取画板节点
+            // var a = canvas.getContext('2d');                           //绘图环境设置
+            // a.lineWidth = 200;                                         //线段宽度设置
+            // var color=a.createLinearGradient(0,200,400,200);           //设置渐变色
+            // color.addColorStop(0,'red')
+            // color.addColorStop(0.15,'orange')
+            // color.addColorStop(0.3,'yellow')
+            // color.addColorStop(0.45,'green')
+            // color.addColorStop(0.6,'blue')
+            // color.addColorStop(0.75,'darkcyan')
+            // color.addColorStop(0.85,'purple')
+            // color.addColorStop(1,'black')
+            // a.strokeStyle=color;                                      //渐变色赋值给线段
+
+            // var text = document.getElementsByTagName('span')[0];  //获取文本节点
+            // var deg = 0;                                              //设定初始圆弧度数
+            // var num=0;                                                //设置文本初始值
+            // var time = setInterval(function () {                      //设置定时器
+            //     deg++;                                                //度数累加
+            //     num =  Math.ceil(deg/360*100) + '%';                  // 文本数值与圆弧度数相匹配
+            //     a.beginPath();                                        //开始
+            //     a.arc(200, 200, 100, 0, deg / 180 * Math.PI, false)   //画圆
+            //     a.stroke();                                           //绘制路径   
+
+            //     a.closePath();                                        //绘图结束
+
+
+            //     text.innerText = num;                                //  文本内容等于
+
+
+            //     if(deg >=360){                                       //如果度数大于或等于360度，清除定时器
+            //        clearInterval(time);
+            //        alert('Game Over')
+            //     }
+
+            // }, 10)
+
+
+            var canvas = document.getElementsByTagName('canvas')[0];
+            var a = canvas.getContext('2d');
+            a.lineWidth = 100;      
+            var color = a.createLinearGradient(0, 200, 400, 200);
+           
+            color.addColorStop(0, 'red');
+            color.addColorStop(0.2, 'orange');
+            color.addColorStop(0.4, 'yellow');
+            color.addColorStop(0.6, 'blue');
+            color.addColorStop(0.8, 'purple');
+            color.addColorStop(1, 'white');
+            a.strokeStyle= color;
+            a.fill()
+            
+
+            var deg = 0;
+            var num = 0;
+            var text = document.getElementsByTagName('span')[0];
+            
+            var time = setInterval(function () {
+                deg++;
+                num=Math.floor(deg/360*100)+'%'
+                
+                a.beginPath();
+                a.arc(200, 200, 100, 0,deg/180*Math.PI,false)
+                a.stroke();
+                a.closePath
+                text.innerHTML=num;
+                if(deg>=361){
+                   clearInterval(time);
+                   alert('aaa')
+               }
+            },10)
+
+
+        }
+    </script>
+</head>
+
+<body>
+    <div class="logo">
+        <canvas width="400" height="400"></canvas>
+        <span>10%</span>
+    </div>
+</body>
+
+</html>
